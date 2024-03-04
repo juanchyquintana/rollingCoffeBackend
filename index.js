@@ -14,3 +14,9 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.get("/", (req, res) => {
+  console.log("alguien solicito algo");
+
+  res.send('Qué queres pelear?')
+});
