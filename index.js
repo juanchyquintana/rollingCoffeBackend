@@ -2,6 +2,10 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import "dotenv/config";
+import { fileURLToPath } from "url";
+import path from "path";
+import productosRouter from "./src/routes/productosRoutes.js";
+import './src/database/database.js'
 
 const app = express();
 
@@ -15,8 +19,8 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  console.log("alguien solicito algo");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, "/public")));
 
-  res.send('Qué queres pelear?')
-});
+app.use("/api", productosRouter);
