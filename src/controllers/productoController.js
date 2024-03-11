@@ -1,3 +1,5 @@
+import Producto from '../database/model/Producto.js'
+
 const listarProductos = async (req, res) => {
   console.log("holaaaa");
 
