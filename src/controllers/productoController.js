@@ -47,4 +47,19 @@ const editarProducto = async (req, res) => {
   }
 };
 
-export { listarProductos, crearProductos, obtenerProducto, editarProducto };
+const borrarProducto = async (req, res) => {
+  try {
+    const buscarProducto = await Producto.findById(req.params.id);
+    if (!buscarProducto) {
+      return res.status(404).json({ mensaje: "Producto No Encontrado" });
+    }
+
+    await Producto.findByIdAndDelete(req.params.id);
+    res.status(200).json({ mensaje: "Producto Eliminado Correctamente!" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ mensaje: "Error al Eliminar el Producto" });
+  }
+};
+
+export { listarProductos, crearProductos, obtenerProducto, editarProducto, borrarProducto};
