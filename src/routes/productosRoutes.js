@@ -12,8 +12,8 @@ const router = Router();
 router.get("/productos", listarProductos);
 router.post("/productos", crearProductos);
 
-router.get("/producto/:id", obtenerProducto);
-router.put("/producto/:id", editarProducto);
-router.delete("/producto/:id", borrarProducto);
+router.get("/productos/:id", obtenerProducto);
+router.put("/productos/:id", editarProducto);
+router.delete("/productos/:id", borrarProducto);
 
 export default router;
