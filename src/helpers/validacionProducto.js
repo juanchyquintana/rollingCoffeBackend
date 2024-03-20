@@ -19,6 +19,20 @@ const validacionesProducto = [
         throw new Error("El precio debe estar entre $50 y $10000");
       }
     }),
+  check("imagen")
+    .notEmpty()
+    .withMessage("La imagen es un campo Obligatorio")
+    .matches(/(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|gif|png)/)
+    .withMessage(
+      "La imagen debe tener un formato de URL valida y terminar jpg|jpeg|gif|png"
+    ),
+  check("categoria")
+    .notEmpty()
+    .withMessage("La Categoria es Obligatoria")
+    .isIn(["Infusiones", "Batidos", "Dulce", "Salado"])
+    .withMessage(
+      "La Categoria debe ser una de las siguientes opciones: Infusiones, Batidos, Dulce, Salado"
+    ),
   (req, res, next) => resultadoValidacion(req, res, next),
 ];
 
