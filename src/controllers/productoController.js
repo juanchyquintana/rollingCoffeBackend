@@ -13,7 +13,6 @@ const listarProductos = async (req, res) => {
 const crearProductos = async (req, res) => {
   try {
     const productoNuevo = await Producto.create(req.body);
-
     await productoNuevo.save();
     res.status(201).json({ mensaje: "Producto creado correctamente!" });
   } catch (error) {
@@ -62,4 +61,10 @@ const borrarProducto = async (req, res) => {
   }
 };
 
-export { listarProductos, crearProductos, obtenerProducto, editarProducto, borrarProducto};
+export {
+  listarProductos,
+  crearProductos,
+  obtenerProducto,
+  editarProducto,
+  borrarProducto,
+};
