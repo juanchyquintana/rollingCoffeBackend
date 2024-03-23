@@ -5,6 +5,7 @@ import "dotenv/config";
 import { fileURLToPath } from "url";
 import path from "path";
 import productosRouter from "./src/routes/productosRoutes.js";
+import usuariosRouter from './src/routes/usuariosRoutes.js'
 import './src/database/database.js'
 
 const app = express();
@@ -24,3 +25,4 @@ const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.use("/api", productosRouter);
+app.use("/", usuariosRouter);
