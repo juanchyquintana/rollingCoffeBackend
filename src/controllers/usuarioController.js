@@ -9,12 +9,17 @@ const registrarUsuario = async (req, res) => {
     const error = new Error("El Email está en uso");
     return res.status(400).json({ mensaje: error.message });
   }
-  
+
   try {
     const usuario = await Usuario.create(req.body);
     await usuario.save();
 
-    res.status(201).json({ mensaje: "Usuario creado correctamente!" });
+    res.status(201).json({
+      mensaje: "Usuario creado correctamente!",
+      email: usuario.email,
+      nombre: usuario.nombre,
+    });
+    
   } catch (error) {
     console.log(error);
     res.status(404).json({ mensaje: "No se pudo crear el Usuario" });
